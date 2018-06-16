@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>العروض</h1>
+
+<%= link_to 'اضافة عرض', new_redeem_item_path %>
+
+<br>
+<br>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>الاسم</th>
+      <th>التكلفة</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @redeem_items.each do |redeem_item| %>
+      <tr>
+        <td><%= redeem_item.name %></td>
+        <td><%= redeem_item.cost %></td>
+        <td><%= link_to 'تعديل', edit_redeem_item_path(redeem_item) %></td>
+        <td><%= link_to 'مسح', redeem_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

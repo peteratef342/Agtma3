@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir="rtl" >
+
+  <head>
+    <title>Agtma3</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <!-- class="active" -->
+   <div class="topnav" >
+     <a href= "/" >Home</a>
+      <a href= <%= people_path %>>شباب</a>
+      <a href= <%= families_path %>> اسر</a>
+     <a href= <%= events_path %>> احداث</a>
+     <a href= <%= colleges_path %>> كليات</a>
+      <a href= <%= redeem_items_path %>> عروض</a> 
+
+ </div>
+ 
+ <div style="padding:10px">
+   <%= yield %>
+ </div>
+  
+  </body>
+
+</html>

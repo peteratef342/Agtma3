@@ -1,0 +1,27 @@
+<%= form_with(model: redeem_record, local: true) do |form| %>
+  <% if redeem_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(redeem_record.errors.count, "error") %> prohibited this redeem_record from being saved:</h2>
+
+      <ul>
+      <% redeem_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :person_id %>
+    <%= form.text_field :person_id, id: :redeem_record_person_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :redeem_item_id %>
+    <%= form.text_field :redeem_item_id, id: :redeem_record_redeem_item_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

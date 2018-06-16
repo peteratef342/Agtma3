@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>الاحداث</h1>
+
+<%= link_to 'اضافة حدث', new_event_path %>
+
+<br>
+<br>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>الأسم</th>
+	  <th>النقاط</th>
+      <th>التاريخ</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.points %></td>
+        <td><%= event.date %></td>
+        <td><%= link_to 'تعديل', edit_event_path(event) %></td>
+        <td><%= link_to 'مسح', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

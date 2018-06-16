@@ -1,0 +1,48 @@
+<%= form_with(model: person, local: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :الاسم %>
+    <%= form.text_field :name, id: :person_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :تليفون %>
+    <%= form.text_field :mobile, id: :person_mobile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :الميلاد %>
+    <%= form.date_select :birthdate, id: :person_birthdate %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :الاسرة %>
+    <%= form.collection_select :family_id, Family.order(:name),:id,:name, include_blank: false %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :الكلية%>
+    <%= form.collection_select :college_id, College.order(:name),:id,:name, include_blank: false %>
+
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit "تسجيل"%>
+  </div>
+<% end %>

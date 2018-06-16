@@ -1,0 +1,2 @@
+module RedeemRecordsHelper
+end

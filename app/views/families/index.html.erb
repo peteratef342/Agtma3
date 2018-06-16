@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>الأسر</h1>
+
+<%= link_to 'اضافة اسرة', new_family_path %>
+<br>
+<br>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>الأسم</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @families.each do |family| %>
+      <tr>
+        <td><%= family.name %></td>
+        <td><%= link_to 'تعديل', edit_family_path(family) %></td>
+        <td><%= link_to 'مسح', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>الكليات</h1>
+
+<%= link_to 'اضافة كلية', new_college_path %>
+
+<br>
+<br>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>الاسم</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @colleges.each do |college| %>
+      <tr>
+        <td><%= college.name %></td>
+        <td><%= link_to 'تعديل', edit_college_path(college) %></td>
+        <td><%= link_to 'مسح', college, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

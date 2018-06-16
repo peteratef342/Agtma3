@@ -1,0 +1,27 @@
+<%= form_with(model: redeem_item, local: true) do |form| %>
+  <% if redeem_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(redeem_item.errors.count, "error") %> prohibited this redeem_item from being saved:</h2>
+
+      <ul>
+      <% redeem_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :الاسم %>
+    <%= form.text_field :name, id: :redeem_item_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :التكلفة %>
+    <%= form.number_field :cost, id: :redeem_item_cost %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "تسجيل"%>
+  </div>
+<% end %>
