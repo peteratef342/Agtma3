@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180616145839) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "colleges", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -39,17 +42,17 @@ ActiveRecord::Schema.define(version: 20180616145839) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "family_id"
-    t.integer "system_id"
-    t.integer "college_id"
+    t.bigint "family_id"
+    t.bigint "system_id"
+    t.bigint "college_id"
     t.index ["college_id"], name: "index_people_on_college_id"
     t.index ["family_id"], name: "index_people_on_family_id"
     t.index ["system_id"], name: "index_people_on_system_id"
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "event_id"
+    t.bigint "person_id"
+    t.bigint "event_id"
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 20180616145839) do
   end
 
   create_table "redeem_records", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "redeem_item_id"
+    t.bigint "person_id"
+    t.bigint "redeem_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_redeem_records_on_person_id"
@@ -79,4 +82,8 @@ ActiveRecord::Schema.define(version: 20180616145839) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "records", "events"
+  add_foreign_key "records", "people"
+  add_foreign_key "redeem_records", "people"
+  add_foreign_key "redeem_records", "redeem_items"
 end
