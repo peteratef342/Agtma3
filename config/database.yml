@@ -30,7 +30,7 @@ development:
   pool: 5
   timeout: 5000
   username: 'postgres'
-  password: '314285'
+  password: 
 test:
   adapter: postgresql
   database: my_database_test
