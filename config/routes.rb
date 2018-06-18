@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
   resources :redeem_records
-  get 'home/index'
+  get 'home/search'
 
   resources :people
   resources :families, :except => [:show]
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :redeem_items, :except => [:show]
   resources :records, :only => [:destroy, :create]
 
-  root 'home#index'
+  root 'home#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

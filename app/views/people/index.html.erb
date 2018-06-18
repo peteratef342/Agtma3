@@ -7,6 +7,22 @@
 <br>
 <br>
 
+<%= form_for  @person, :url => { :controller => "people", :action => "index" }, :html => {:method => :get} do |form| %>
+  
+  <div class="field">
+    <%= form.label :الاسرة %>
+    <%= form.collection_select :family_id, Family.order(:name),:id,:name , include_blank: true%>
+  
+    <%= form.submit "بحث" %>
+
+  </div>
+
+<% end %>
+
+
+<br>
+<br>
+
 <table border="1">
   <thead>
     <tr>

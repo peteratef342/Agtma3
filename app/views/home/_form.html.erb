@@ -1,0 +1,31 @@
+<%= form_for  person, :url => { :controller => "home", :action => "search" }, :html => {:method => :get} do |form| %>
+
+  <div class="field">
+    <%= form.label :الاسم %>
+    <%= form.text_field :name, id: :person_name  %>
+
+  <%= form.label :الاسرة %>
+    <%= form.collection_select :family_id, Family.order(:name),:id,:name, include_blank: true %>
+
+  <%= form.label :الكلية%>
+    <%= form.collection_select :college_id, College.order(:name),:id,:name, include_blank: true %>
+  
+  </div>
+
+  <div class="field">
+    <%= form.label :تليفون %>
+    <%= form.text_field :mobile, id: :person_mobile %>
+  
+    <%= form.label :نقاط %>
+    <%= form.number_field :points, id: :person_points, include_blank: true %>
+  
+    <%#= form.label :الميلاد %>
+    <%#= form.date_select :birthdate, id: :person_birthdate , include_blank: true ,start_year: 1955 %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit "بحث"%>
+  </div>
+<% end %>

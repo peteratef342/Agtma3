@@ -4,7 +4,16 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+  
+    @person = Person.new
+  
+    if params[:person] and params[:person][:family_id] != ""
+       @people = Person.where(:family_id => params[:person][:family_id])
+	  else
+      @people = Person.all
+    end
+	
+    puts params
   end
 
   # GET /people/1
