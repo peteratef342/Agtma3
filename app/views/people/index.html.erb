@@ -23,31 +23,34 @@
 <br>
 <br>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>الاسم</th>
-      <th>نقاط</th>
-      <th>تليفون</th>
-      <th>الاسرة</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%if @people and @people.count > 0 %>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.name %></td>
-        <td><%= person.points %></td>
-        <td><%= person.mobile %></td>
-        <td><%= person.family.name %></td>
-        <td><%= link_to 'عرض', person %></td>
-        <td><%= link_to 'تعديل', edit_person_path(person) %></td>
-        <td><%= link_to 'مسح', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table border="1">
+	  <thead>
+		<tr>
+		  <th>الاسم</th>
+		  <th>نقاط</th>
+		  <th>تليفون</th>
+		  <th>الاسرة</th>
+		  <th colspan="3"></th>
+		</tr>
+	  </thead>
 
-<br>
+	  <tbody>
+		<% @people.each do |person| %>
+		  <tr>
+			<td><%= person.name %></td>
+			<td><%= person.points %></td>
+			<td><%= person.mobile %></td>
+			<td><%= person.family.name %></td>
+			<td><%= link_to 'عرض', person %></td>
+			<td><%= link_to 'تعديل', edit_person_path(person) %></td>
+			<td><%= link_to 'مسح', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
+	<br>
+
+<%end%>

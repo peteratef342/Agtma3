@@ -7,28 +7,31 @@
 <br>
 <br>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>الأسم</th>
-	  <th>النقاط</th>
-      <th>التاريخ</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<%if @events and @events.count > 0 %>
 
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.points %></td>
-        <td><%= event.date %></td>
-        <td><%= link_to 'تعديل', edit_event_path(event) %></td>
-        <td><%= link_to 'مسح', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table border="1">
+	  <thead>
+		<tr>
+		  <th>الأسم</th>
+		  <th>النقاط</th>
+		  <th>التاريخ</th>
+		  <th colspan="2"></th>
+		</tr>
+	  </thead>
 
-<br>
+	  <tbody>
+		<% @events.each do |event| %>
+		  <tr>
+			<td><%= event.name %></td>
+			<td><%= event.points %></td>
+			<td><%= event.date %></td>
+			<td><%= link_to 'تعديل', edit_event_path(event) %></td>
+			<td><%= link_to 'مسح', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
+	<br>
+
+<%end%>	

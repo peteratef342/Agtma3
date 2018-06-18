@@ -17,6 +17,22 @@
   </div>
 
   <div class="field">
+    <%= form.label :الاسرة %>
+    <%= form.collection_select :family_id, Family.order(:name),:id,:name, include_blank: false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :الكلية%>
+    <%= form.collection_select :college_id, College.order(:name),:id,:name, include_blank: false %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :العنوان %>
+    <%= form.text_field :address, id: :person_address %>
+  </div>
+
+  
+  <div class="field">
     <%= form.label :تليفون %>
     <%= form.text_field :mobile, id: :person_mobile %>
   </div>
@@ -28,17 +44,7 @@
 
 
 
-  <div class="field">
-    <%= form.label :الاسرة %>
-    <%= form.collection_select :family_id, Family.order(:name),:id,:name, include_blank: false %>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :الكلية%>
-    <%= form.collection_select :college_id, College.order(:name),:id,:name, include_blank: false %>
-
-  </div>
+  
 
 
 

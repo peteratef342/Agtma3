@@ -1,10 +1,6 @@
 class HomeController < ApplicationController
   
   def search
-  	
-	puts "------------------------------------------------------------------------"
-  	puts params
-  	puts "------------------------------------------------------------------------"
 
   	query = ""
 
@@ -13,7 +9,7 @@ class HomeController < ApplicationController
   	  start = false
   	  if params[:person][:mobile] != ""
   	  	start = true
-  	  	query+= "mobile = '#{params[:person][:mobile]}'"
+  	  	query+= "mobile like '%#{params[:person][:mobile]}%'"
   	  end
 
   	  if params[:person][:family_id] != ""

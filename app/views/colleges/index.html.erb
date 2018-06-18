@@ -7,24 +7,27 @@
 <br>
 <br>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>الاسم</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<%if @colleges and @colleges.count > 0 %>
 
-  <tbody>
-    <% @colleges.each do |college| %>
-      <tr>
-        <td><%= college.name %></td>
-        <td><%= link_to 'تعديل', edit_college_path(college) %></td>
-        <td><%= link_to 'مسح', college, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table border="1">
+	  <thead>
+		<tr>
+		  <th>الاسم</th>
+		  <th colspan="2"></th>
+		</tr>
+	  </thead>
 
-<br>
+	  <tbody>
+		<% @colleges.each do |college| %>
+		  <tr>
+			<td><%= college.name %></td>
+			<td><%= link_to 'تعديل', edit_college_path(college) %></td>
+			<td><%= link_to 'مسح', college, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
+	<br>
+
+<%end%>	

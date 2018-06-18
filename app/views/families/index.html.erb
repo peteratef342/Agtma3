@@ -6,24 +6,27 @@
 <br>
 <br>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>الأسم</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<%if @families and @families.count > 0 %>
 
-  <tbody>
-    <% @families.each do |family| %>
-      <tr>
-        <td><%= family.name %></td>
-        <td><%= link_to 'تعديل', edit_family_path(family) %></td>
-        <td><%= link_to 'مسح', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table border="1">
+	  <thead>
+		<tr>
+		  <th>الأسم</th>
+		  <th colspan="2"></th>
+		</tr>
+	  </thead>
 
-<br>
+	  <tbody>
+		<% @families.each do |family| %>
+		  <tr>
+			<td><%= family.name %></td>
+			<td><%= link_to 'تعديل', edit_family_path(family) %></td>
+			<td><%= link_to 'مسح', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
+	<br>
+
+<%end%>
