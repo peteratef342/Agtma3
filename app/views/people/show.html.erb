@@ -41,8 +41,11 @@
 <%= form_for @record, :url => { :controller => "records", :action => "create" }, :html => {:method => :post} do |form| %>
   <div class="field">
     <%= form.label :الحدث %>
-    <%= form.collection_select :event_id, Event.order(:date),:id, :name_with_points, include_blank: false %>
-   
+    <%= form.collection_select :event_id, Event.order(:created_at),:id, :name_with_points, include_blank: false %>
+    
+	<%= form.label :التاريخ %>
+    <%= form.date_select :date, id: :record_date ,start_year: 2016%>
+      
     <%= form.hidden_field :person_id, value: @person.id %>
     <%= form.submit "اضف" %>
 
@@ -66,7 +69,7 @@
     <%  @records.each do |record| %>
       <tr>
         <td><%= record.event.name %></td>
-        <td><%= record.event.date %></td>
+        <td><%= record.date %></td>
         <td><%= record.points %></td>
         <td><%= link_to 'مسح', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
@@ -91,8 +94,6 @@
   </div>
 
 <% end %>
-
-
 
 
 <table border="1">

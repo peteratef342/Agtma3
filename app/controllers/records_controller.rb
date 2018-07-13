@@ -10,9 +10,10 @@ class RecordsController < ApplicationController
     if @record.points
       @person.points = @person.points + @record.points
     end
+	
     respond_to do |format|
       if @record.points and @record.save and @person.save
-        format.html { redirect_to @record.person, notice: 'Record was successfully created.' }
+        format.html { redirect_to @record.person, notice: "Record was successfully created." }
       else
         format.html { redirect_to @record.person, notice: "Can't create Record." }
       end
@@ -39,7 +40,7 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:person_id, :event_id)
+      params.require(:record).permit(:person_id, :event_id, :date)
 
     end
 end
